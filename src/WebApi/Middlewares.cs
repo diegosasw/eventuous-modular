@@ -1,5 +1,4 @@
 using ClientModule;
-using OrganizationModule;
 
 namespace WebApi;
 
@@ -9,7 +8,6 @@ public static class Middlewares
     {
         app
             .AddClientCommands()
-            .AddOrganizationCommands()
             .MapControllers();
         
         return app;

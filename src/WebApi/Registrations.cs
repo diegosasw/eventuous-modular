@@ -5,8 +5,6 @@ using Eventuous.EventStore;
 using Eventuous.Spyglass;
 using NodaTime;
 using NodaTime.Serialization.SystemTextJson;
-using OrganizationModule;
-using OrganizationModule.DomainEvents;
 using System.Text.Json;
 
 namespace WebApi;
@@ -52,8 +50,7 @@ public static class Registrations
         services.AddSingleton(commandMap);
 
         services
-            .AddClientModule(streamNameMap)
-            .AddOrganizationModule(streamNameMap);
+            .AddClientModule(streamNameMap);
         
         return services;
     }
@@ -67,16 +64,6 @@ public static class Registrations
         services.AddCommandService<ClientCommandService, Client>();
         TypeMap.RegisterKnownEventTypes(typeof(ClientEvents.V1.ClientCreated).Assembly);
         
-        return services;
-    }
-    
-    private static IServiceCollection AddOrganizationModule(this IServiceCollection services, StreamNameMap streamNameMap)
-    {
-        streamNameMap.Register<OrganizationId>(organizationId => 
-            new StreamName($"organization-{organizationId.TenantId}-{organizationId.Value}"));
-        services.AddCommandService<OrganizationCommandService, Organization>();
-        TypeMap.RegisterKnownEventTypes(typeof(OrganizationEvents.V1.OrganizationCreated).Assembly);
-
         return services;
     }
 

@@ -2,8 +2,6 @@
 Modular monolith with ES and CQRS using Eventuous
 
 `WebApi` is the main project.
-There are two command services: `ClientModule` and `OrganizationModule`.
-Each command service has its domain events in its own project: `ClientModule.DomainEvents` and `OrganizationModule.DomainEvents`.
 
 ### Issues and How to Reproduce
 
