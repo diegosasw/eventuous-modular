@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Eventuous.AspNetCore.Web" Version="0.14.1-alpha.0.7" />
+      <PackageReference Include="Serilog.AspNetCore" Version="6.1.1-dev-00295" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ClientModule.DomainEvents\ClientModule.DomainEvents.csproj" />
+    </ItemGroup>
+
+</Project>
